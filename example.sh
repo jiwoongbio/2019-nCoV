@@ -63,5 +63,5 @@ awk -F'\t' -vOFS='\n' '{print ">"$1"|"$2"|0", $3, ">"$1"|"$2"|1", $4}' protein.v
 BepiPred-2.0 protein.fasta > BepiPred-2.0.txt
 
 # MHC binding prediction
-perl netMHCpan.pl peptide.fasta HLA-A01:01 | sed 's/|/\t/' | sed 's/|/\t/' | awk -F'\t' -vOFS='\t' '{print $1, $2 + $4, $5, $6, $7, $3}' > netMHCpan.variant.HLA-A01:01.txt
-perl netMHCIIpan.pl peptide.fasta HLA-DPA10103-DPB10101 | sed 's/|/\t/' | sed 's/|/\t/' | awk -F'\t' -vOFS='\t' '{print $1, $2 + $4, $5, $6, $7, $3}' > netMHCpan.variant.HLA-DPA10103-DPB10101.txt
+perl netMHCpan.pl peptide.fasta HLA-A01:01 | sed 's/|/\t/' | sed 's/|/\t/' | awk -F'\t' -vOFS='\t' '{print $1, $2 + $4 - 1, $5, $6, $7, $3}' > netMHCpan.variant.HLA-A01:01.txt
+perl netMHCIIpan.pl peptide.fasta HLA-DPA10103-DPB10101 | sed 's/|/\t/' | sed 's/|/\t/' | awk -F'\t' -vOFS='\t' '{print $1, $2 + $4 - 1, $5, $6, $7, $3}' > netMHCpan.variant.HLA-DPA10103-DPB10101.txt
